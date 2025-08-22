@@ -35,7 +35,7 @@ Aplicación web desarrollada en Python con Streamlit para simular la economía d
 
 ### Pasos para ejecutar
 
-1. **Instalar dependencias:**
+1. **Instalar dependencias** (versiones exactas definidas en `requirements.txt`):
    ```bash
    pip install -r requirements.txt
    ```
