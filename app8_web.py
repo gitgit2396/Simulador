@@ -129,21 +129,23 @@ def render_kpis(kpis, dscr_threshold=1.20):
     st.subheader("📈 Indicadores Clave (KPIs)")
     
     col1, col2, col3, col4 = st.columns(4)
-    
+
     with col1:
         st.metric("NPV Proyecto (WACC)", format_number(kpis.get('NPV Proyecto (WACC)', 0), 0))
-        st.metric("IRR Proyecto", format_number(kpis.get('IRR Proyecto'), 2, True) if kpis.get('IRR Proyecto') else "N/A")
-    
+        irr_proy = kpis.get('IRR Proyecto')
+        st.metric("IRR Proyecto", format_number(irr_proy, 2, True) if irr_proy is not None else "N/A")
+
     with col2:
         st.metric("NPV Equity (Ke)", format_number(kpis.get('NPV Equity (Ke)', 0), 0))
-        st.metric("IRR Equity", format_number(kpis.get('IRR Equity'), 2, True) if kpis.get('IRR Equity') else "N/A")
-    
+        irr_eq = kpis.get('IRR Equity')
+        st.metric("IRR Equity", format_number(irr_eq, 2, True) if irr_eq is not None else "N/A")
+
     with col3:
         payback_proj = kpis.get('Payback Proyecto')
-        st.metric("Payback Proyecto", f"{payback_proj:.1f} años" if payback_proj else "N/A")
+        st.metric("Payback Proyecto", f"{payback_proj:.1f} años" if payback_proj is not None else "N/A")
         payback_eq = kpis.get('Payback Equity')
-        st.metric("Payback Equity", f"{payback_eq:.1f} años" if payback_eq else "N/A")
-    
+        st.metric("Payback Equity", f"{payback_eq:.1f} años" if payback_eq is not None else "N/A")
+
     with col4:
         dscr_min = kpis.get('DSCR Mínimo')
         if dscr_min is not None:
@@ -151,9 +153,9 @@ def render_kpis(kpis, dscr_threshold=1.20):
             st.metric("DSCR Mínimo", f"{dscr_min:.2f}", delta=f"Umbral: {dscr_threshold:.2f}", delta_color=delta_color)
         else:
             st.metric("DSCR Mínimo", "N/A (Sin deuda)")
-            
+
         dscr_avg = kpis.get('DSCR Promedio')
-        st.metric("DSCR Promedio", f"{dscr_avg:.2f}" if dscr_avg else "N/A")
+        st.metric("DSCR Promedio", f"{dscr_avg:.2f}" if dscr_avg is not None else "N/A")
 
 def render_charts(df, scenario_name="Escenario"):
     """Renderiza gráficos del modelo"""
