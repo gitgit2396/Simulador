@@ -422,25 +422,22 @@ def main():
             render_kpis(kpis, dscr_threshold)
             
             # Análisis adicionales
-            if st.expander("🔍 Análisis de Sensibilidad"):
+            with st.expander("🔍 Análisis de Sensibilidad"):
                 if st.button("Ejecutar Sensibilidad ±10%"):
                     with st.spinner("Calculando sensibilidades..."):
                         sens_result = run_sensitivity_analysis(parameters)
-                        
                         sens_df = pd.DataFrame(sens_result['results'])
                         st.dataframe(sens_df, use_container_width=True)
-            
-            if st.expander("🎯 Dimensionamiento de Deuda por DSCR"):
+
+            with st.expander("🎯 Dimensionamiento de Deuda por DSCR"):
                 target_dscr = st.number_input(
-                    "DSCR Objetivo", 
-                    min_value=1.10, max_value=2.00, 
+                    "DSCR Objetivo",
+                    min_value=1.10, max_value=2.00,
                     value=1.20, step=0.05
                 )
-                
                 if st.button("Calcular Deuda Máxima"):
                     with st.spinner("Optimizando estructura de deuda..."):
                         debt_result = find_max_debt_by_dscr(parameters, target_dscr)
-                        
                         if debt_result['result']:
                             col1, col2, col3 = st.columns(3)
                             with col1:
