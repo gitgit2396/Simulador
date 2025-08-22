@@ -1,0 +1,38 @@
+# Ejemplo de escenario para planta fotovoltaica
+# Proyecto de 100 MW con financiamiento moderado
+
+# Parámetros técnicos
+YEARS: 30
+PLANT_MW: 100.0
+CAP_FACTOR: 0.28
+DEGRADATION: 0.005
+
+# CapEx y repotenciación
+CAPEX0_PER_KW: 750.0
+INVERTER_REPOWER_USD_PER_KW: 45.0
+REP_YEAR: 12
+
+# Ingresos
+PRICE_USD_PER_MWH_Y1: 50.0
+PRICE_ESCALATION: 0.02
+
+# Costos operativos
+FOM_USD_PER_KW_YR: 12.0
+VOM_USD_PER_MWH: 2.0
+LAND_LEASE_USD_PER_MW_YR: 2500.0
+OPEX_ESCALATION: 0.025
+
+# Parámetros financieros y fiscales
+TAX_RATE: 0.30
+NWC_PCT_OF_REVENUE: 0.05
+WACC: 0.095
+KE: 0.14
+
+# Depreciación
+DEP_YEARS_CAPEX0: 5
+DEP_YEARS_REP: 10
+
+# Estructura de deuda
+DEBT_PCT_CAPEX0: 0.40
+DEBT_RATE: 0.075
+DEBT_TERM_YEARS: 15
